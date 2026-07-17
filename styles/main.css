@@ -59,6 +59,17 @@ body::before {
     radial-gradient(680px 420px at 70% 105%, rgba(88, 166, 255, 0.05), transparent 60%);
 }
 
+/* Animated node-network canvas, sandwiched between tints and grid */
+#bg-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.55;
+}
+
 /* Fixed background: fine grid, faded out below the fold so content stays calm */
 body::after {
   content: '';
@@ -240,9 +251,9 @@ main > .section:last-of-type { padding-bottom: var(--space-section); }
 
 .hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(300px, 1fr);
+  grid-template-columns: minmax(0, 1.4fr) minmax(320px, 1fr);
   gap: 48px;
-  align-items: start;
+  align-items: stretch; /* status card fills the full hero height — no dead space below it */
 }
 
 .hero-name {
@@ -344,6 +355,8 @@ main > .section:last-of-type { padding-bottom: var(--space-section); }
 
 /* ---- Status card (hero right) ---- */
 .status-card {
+  display: flex;
+  flex-direction: column;
   background: var(--bg-elev);
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -380,43 +393,48 @@ main > .section:last-of-type { padding-bottom: var(--space-section); }
 .status-profile {
   display: flex;
   align-items: center;
-  gap: 14px;
-  padding: 16px;
+  gap: 16px;
+  padding: 20px;
   border-bottom: 1px solid var(--border-soft);
 }
 
 .avatar {
-  width: 56px;
-  height: 56px;
+  width: 72px;
+  height: 72px;
   border-radius: 50%;
   object-fit: cover;
-  border: 1px solid var(--border);
+  border: 2px solid var(--border);
   flex: none;
 }
 
-.status-name { font-weight: 600; font-size: 15px; }
+.status-name { font-weight: 700; font-size: 18px; }
 .status-role {
   color: var(--text-dim);
-  font-size: 13px;
-  margin-top: 2px;
+  font-size: 14px;
+  margin-top: 3px;
 }
 
+/* Stats grid grows to fill the card; each cell centers its content */
 .status-stats {
   display: grid;
   grid-template-columns: 1fr 1fr;
   margin: 0;
+  flex: 1;
 }
 
 .stat {
-  padding: 16px;
+  padding: 20px;
   border-bottom: 1px solid var(--border-soft);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .stat:nth-child(odd) { border-right: 1px solid var(--border-soft); }
 .stat:nth-last-child(-n+2) { border-bottom: none; }
 
 .stat-label {
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--text-mute);
@@ -424,15 +442,15 @@ main > .section:last-of-type { padding-bottom: var(--space-section); }
 
 .stat-value {
   font-family: var(--mono);
-  font-size: 26px;
+  font-size: clamp(30px, 2.8vw, 38px);
   font-weight: 700;
   color: var(--text);
-  margin-top: 4px;
+  margin-top: 6px;
   line-height: 1.1;
 }
 
 .stat-unit {
-  font-size: 14px;
+  font-size: 17px;
   font-weight: 500;
   color: var(--text-dim);
 }
