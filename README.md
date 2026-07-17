@@ -1,22 +1,24 @@
 # Phuoc Ho Van — DevOps Portfolio
 
-A creative one-page portfolio rendered as a **CI/CD pipeline**.
-Each section is a pipeline stage: `build → test → deploy → monitor → notify`.
+A one-page portfolio in an **editorial + ops telemetry** style: a clean,
+recruiter-scannable layout where the DevOps flavor comes from real-number
+stat tiles, static SVG sparklines, and monospace accents — never from
+gimmicks that hide information.
 
 **Stack:** vanilla HTML / CSS / JS — no build step, no framework.
-**Host:** GitHub Pages, deployed by GitHub Actions on every push to `master`.
+**Host:** GitHub Pages, deployed by GitHub Actions on every push to `master`/`main`.
 
 ---
 
-## Preview
+## Sections
 
-| Stage    | Section          | What it shows                                |
-|----------|------------------|----------------------------------------------|
-| build    | `whoami`         | Terminal-style intro + profile card          |
-| test     | `skills.spec`    | Test-suite style skill matrix                |
-| deploy   | `projects`       | "Live services" — DevOps projects            |
-| monitor  | `metrics`        | Animated career counters                     |
-| notify   | `contact`        | Webhook-style contact block + CTA buttons    |
+| Section          | What it shows                                                    |
+|------------------|------------------------------------------------------------------|
+| Hero             | Name, value proposition, CTAs + uptime-style status card         |
+| Experience       | Case-study cards (Problem → What I did → Result) with stat tiles |
+| Skills           | Grouped tool grid with one-line "used for" descriptions          |
+| Certifications   | AWS Credly badges with verify links                              |
+| Contact          | Intro, socials, and a Formspree-powered contact form             |
 
 ---
 
@@ -30,12 +32,11 @@ Each section is a pipeline stage: `build → test → deploy → monitor → not
 ├── scripts/
 │   └── main.js
 ├── assets/
-│   ├── avatar.svg
+│   ├── avatar.jpg
 │   ├── favicon.svg
 │   └── resume.md         # placeholder — replace with resume.pdf
 ├── .github/workflows/
 │   └── deploy.yml        # GitHub Pages deploy
-├── plans/                # implementation plan (kept for reference)
 └── README.md
 ```
 
@@ -56,11 +57,11 @@ python -m http.server 8080
 
 ## Deploy to GitHub Pages
 
-The workflow `.github/workflows/deploy.yml` deploys on push to `master`.
+The workflow `.github/workflows/deploy.yml` deploys on push to `master`/`main`.
 
 One-time GitHub setup:
 
-1. Push this repo to GitHub (e.g. `roosterhp/test`).
+1. Push this repo to GitHub.
 2. Go to **Settings → Pages**.
 3. Under **Build and deployment**, set **Source = GitHub Actions**.
 4. Push any commit — the **Deploy portfolio** workflow runs and publishes.
@@ -74,11 +75,12 @@ Manual run is also available via **Actions → Deploy portfolio → Run workflow
 ## Customize
 
 - **Personal info / bio / links** — edit `index.html` (search for `Phuoc`).
-- **Skills** — edit the 6 `<article class="skill-suite">` blocks.
-- **Projects** — edit the 6 `<article class="project">` blocks.
-- **Metrics** — change `data-count` attrs on `.metric-value`.
+- **Status card stats** — change `data-count` / `data-suffix` attrs in the hero.
+- **Experience** — edit the 3 `<article class="case-card">` blocks; stat tiles
+  live in each card's `.tile-row` (sparklines are hand-authored inline SVG).
+- **Skills** — edit the 6 `<article class="skill-group">` blocks.
 - **Resume** — drop your `resume.pdf` into `assets/` (delete `assets/resume.md`).
-- **Avatar** — replace `assets/avatar.svg` with your own SVG/PNG.
+- **Avatar** — replace `assets/avatar.jpg` with your own image.
 - **Colors** — tweak CSS variables at the top of `styles/main.css`.
 
 ---
