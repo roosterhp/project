@@ -399,11 +399,12 @@ main > .section:last-of-type { padding-bottom: var(--space-section); }
 }
 
 .avatar {
-  width: 72px;
-  height: 72px;
+  width: 104px;
+  height: 104px;
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid var(--border);
+  box-shadow: 0 0 0 4px rgba(88, 166, 255, 0.12);
   flex: none;
 }
 
@@ -480,12 +481,40 @@ main > .section:last-of-type { padding-bottom: var(--space-section); }
 }
 .case-card[data-active="true"]:hover { border-left-color: var(--green); }
 
+/* Card header doubles as the expand/collapse toggle */
 .case-head {
   display: flex;
   align-items: center;
   gap: 16px;
   flex-wrap: wrap;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
 }
+
+.case-caret {
+  font-size: 16px;
+  color: var(--text-dim);
+  transition: transform 0.25s ease;
+  flex: none;
+}
+.case-card.open .case-caret { transform: rotate(180deg); }
+
+/* Collapsible detail — 0fr -> 1fr grid row animates height without JS math.
+   Collapse only applies on .collapsible (added by JS), so no-JS users see everything. */
+.case-detail {
+  display: grid;
+  grid-template-rows: 1fr;
+  transition: grid-template-rows 0.3s ease;
+}
+.case-card.collapsible:not(.open) .case-detail { grid-template-rows: 0fr; }
+.case-detail-inner { overflow: hidden; min-height: 0; }
 
 .case-logo {
   width: 40px;

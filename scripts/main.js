@@ -7,11 +7,27 @@
   document.addEventListener('DOMContentLoaded', () => {
     setFooterYear();
     wireNavToggle();
+    wireCaseCards();
     startBackgroundNetwork();
     revealSectionsOnScroll();
     animateCounters();
     wireContactForm();
   });
+
+  // Experience cards: collapsed to company/role/dates; header click expands
+  // details. The .collapsible class gates the CSS so no-JS users see all
+  // content expanded.
+  function wireCaseCards() {
+    document.querySelectorAll('.case-card').forEach((card) => {
+      const toggle = card.querySelector('.case-head');
+      if (!toggle) return;
+      card.classList.add('collapsible');
+      toggle.addEventListener('click', () => {
+        const isOpen = card.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', String(isOpen));
+      });
+    });
+  }
 
   function prefersReducedMotion() {
     return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;

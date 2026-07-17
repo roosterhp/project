@@ -83,7 +83,7 @@
             <span class="status-live"><span class="dot dot-ok"></span> all systems operational</span>
           </header>
           <div class="status-profile">
-            <img src="assets/avatar.jpg" alt="Portrait of Phuoc Ho Van" class="avatar" width="56" height="56" />
+            <img src="assets/avatar.jpg" alt="Portrait of Phuoc Ho Van" class="avatar" width="104" height="104" />
             <div>
               <p class="status-name">Phuoc Ho Van</p>
               <p class="status-role">Cloud &amp; Automation · currently automating everything that beeps twice</p>
@@ -119,7 +119,7 @@
       <div class="exp-list">
 
         <article class="case-card" data-active="true">
-          <header class="case-head">
+          <button class="case-head" aria-expanded="false" aria-controls="case-detail-df">
             <img class="case-logo" src="https://www.google.com/s2/favicons?domain=df.technology&sz=128" alt="" loading="lazy" width="40" height="40" />
             <div class="case-id">
               <h3 class="case-company">Digital Fortress</h3>
@@ -129,8 +129,11 @@
               <span class="chip chip-active"><span class="dot dot-ok"></span> Active</span>
               <span class="case-date">Apr 2026 — Present</span>
             </div>
-          </header>
+            <span class="case-caret" aria-hidden="true">▾</span>
+          </button>
 
+          <div class="case-detail" id="case-detail-df">
+          <div class="case-detail-inner">
           <div class="case-body">
             <div class="case-block">
               <h4 class="case-label">problem</h4>
@@ -175,10 +178,12 @@
             </ul>
             <a class="case-link" href="https://df.technology/" target="_blank" rel="noopener noreferrer">df.technology →</a>
           </footer>
+          </div>
+          </div>
         </article>
 
         <article class="case-card">
-          <header class="case-head">
+          <button class="case-head" aria-expanded="false" aria-controls="case-detail-endava">
             <img class="case-logo" src="https://www.google.com/s2/favicons?domain=endava.com&sz=128" alt="" loading="lazy" width="40" height="40" />
             <div class="case-id">
               <h3 class="case-company">Endava</h3>
@@ -188,8 +193,11 @@
               <span class="chip">Completed</span>
               <span class="case-date">Nov 2025 — Feb 2026</span>
             </div>
-          </header>
+            <span class="case-caret" aria-hidden="true">▾</span>
+          </button>
 
+          <div class="case-detail" id="case-detail-endava">
+          <div class="case-detail-inner">
           <div class="case-body">
             <div class="case-block">
               <h4 class="case-label">problem</h4>
@@ -229,10 +237,12 @@
             </ul>
             <a class="case-link" href="https://www.endava.com/" target="_blank" rel="noopener noreferrer">endava.com →</a>
           </footer>
+          </div>
+          </div>
         </article>
 
         <article class="case-card">
-          <header class="case-head">
+          <button class="case-head" aria-expanded="false" aria-controls="case-detail-cnsc">
             <img class="case-logo" src="https://www.google.com/s2/favicons?domain=cnsc.uit.edu.vn&sz=128" alt="" loading="lazy" width="40" height="40" />
             <div class="case-id">
               <h3 class="case-company">CNSC · UIT</h3>
@@ -242,8 +252,11 @@
               <span class="chip">Completed</span>
               <span class="case-date">May 2025 — Nov 2025</span>
             </div>
-          </header>
+            <span class="case-caret" aria-hidden="true">▾</span>
+          </button>
 
+          <div class="case-detail" id="case-detail-cnsc">
+          <div class="case-detail-inner">
           <div class="case-body">
             <div class="case-block">
               <h4 class="case-label">problem</h4>
@@ -285,6 +298,8 @@
             </ul>
             <a class="case-link" href="https://cnsc.uit.edu.vn/" target="_blank" rel="noopener noreferrer">cnsc.uit.edu.vn →</a>
           </footer>
+          </div>
+          </div>
         </article>
 
       </div>
